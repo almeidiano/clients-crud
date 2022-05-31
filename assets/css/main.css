@@ -1,0 +1,20 @@
+body{
+	padding: 0;
+	margin: 0;
+}
+.options{
+	display: flex;
+	justify-content: space-between;
+	padding: 20px 0px;
+}
+table thead th{
+	background-color: rgba(var(--bs-primary-rgb)) !important;
+	color: #FFF !important;
+}
+tbody tr th, td{
+	vertical-align: middle !important;
+}
+textarea{
+    padding: 5px 10px !important;
+    margin: 5px 0px;
+}
