@@ -1,5 +1,5 @@
 <?php 
-	session_start();
+    session_start();
     require_once('Config.php');
     $db = new DB();
 
@@ -90,7 +90,7 @@
 
     class Groups extends Clients{
         public function getAllGroups(){
-            $sql = "SELECT * FROM clients_group";
+            $sql = "SELECT * FROM clients_group WHERE group_id NOT IN (0)";
             $sql = $this->connect()->query($sql);
             
             if($sql->rowCount() > 0){
@@ -153,6 +153,23 @@
                 return true;
             }else{
                 return false;
+            }
+        }
+
+        public function deleteGroup($group_id){
+            $query = "UPDATE clients SET client_group_id = 0 FROM clients_group WHERE group_id = $group_id AND client_group_id = group_id;";
+            $query .= "DELETE FROM clients_group WHERE group_id = $group_id;";
+
+            $connect = pg_connect("host=".Config::DB_HOST." port=".Config::DB_PORT." dbname=".Config::DB_DATABASE." user=".Config::DB_USER." password=".Config::DB_PASS."") or die ("Error:".pg_last_error());
+            $res = pg_query($connect, $query);
+            $rows = pg_affected_rows($res);
+            
+            if($rows > 0) {
+                return true;
+                pg_close($connect);
+            }else{
+                return false;
+                pg_close($connect);
             }
         }
     }

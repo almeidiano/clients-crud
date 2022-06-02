@@ -5,6 +5,7 @@ class Config{
     const DB_DATABASE = 'api_project';
     CONST DB_USER = 'postgres';
     const DB_PASS = '270902';
+    const DB_PORT = '5432'; 
 }
 
 class DB{

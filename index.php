@@ -116,7 +116,6 @@
         <thead class="table-primary">
           <tr>
             <th scope="col">ID cliente</th>
-            <th scope="col">ID grupo</th>
             <th scope="col">NOME</th>
             <th scope="col">CPF</th>
             <th scope="col">AÇÃO</th>

@@ -21,5 +21,5 @@
         $array['result'] = ['error' => true, 'message' => 'Method not allowed'];
     }
 
-    // require('../../class/Return.php');
+    require('../../class/Return.php');
 ?>

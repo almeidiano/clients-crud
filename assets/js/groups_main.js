@@ -8,3 +8,7 @@ groups.updateGroup();
 document.getGroupData = (group_id) => {
 	groups.getGroupData(group_id);
 }
+
+document.deleteGroup = (group_id) => {
+	groups.deleteGroup(group_id);
+}

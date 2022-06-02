@@ -7,17 +7,17 @@ class Clients {
 		let result = res.result;
 
 		result.forEach(client => {
-			let tbody = document.querySelector("table tbody");
-			tbody.innerHTML += `<tr><th class="clientId" scope="row">${client.client_id}</th><th class="groupId" scope="row">${client.client_group_id}</th><td class="clientName">${client.client_name}</td><th class="clientCPF" scope="row">${client.client_cpf}</th><td class="clientAction text-center" scope="row"><button type="button" class="btn btn-warning text-light"data-id="${client.client_id}"data-bs-toggle="modal" data-bs-target="#editClient" onclick="getClientData(this)"><i class="fa-solid fa-pen-to-square"></i></button> <button type="button" class="btn btn-danger" data-id="${client.client_id}" onclick="deleteClient(this)"><i class="fa-solid fa-trash"></i></button></td></tr>`;
+			let tbody = c("table tbody");
+			tbody.innerHTML += `<tr><th class="clientId" scope="row">${client.client_id}</th><td class="clientName">${client.client_name}</td><th class="clientCPF" scope="row">${client.client_cpf}</th><td class="clientAction text-center" scope="row"><button type="button" class="btn btn-warning text-light"data-id="${client.client_id}"data-bs-toggle="modal" data-bs-target="#editClient" onclick="getClientData(this)"><i class="fa-solid fa-pen-to-square"></i></button> <button type="button" class="btn btn-danger" data-id="${client.client_id}" onclick="deleteClient(this)"><i class="fa-solid fa-trash"></i></button></td></tr>`;
 		})
 	}
 
 	async addClient() {
-		VMasker(document.querySelector(".clientCPF")).maskPattern("999.999.999-99");
+		VMasker(c(".clientCPF")).maskPattern("999.999.999-99");
 		const formElem = getId("formElem");
 
 		formElem.addEventListener("submit", async function(e) {
-			const instanceModal = document.getElementById('addClient');
+			const instanceModal = getId('addClient');
 			const modal = bootstrap.Modal.getInstance(instanceModal); 
 			modal.hide();
 			e.preventDefault();
@@ -33,7 +33,7 @@ class Clients {
 
 			if(res.result.status) {
 				const clients = new Clients();
-				let tbody = document.querySelector("table tbody");
+				let tbody = c("table tbody");
 				tbody.innerHTML = null;
 				clients.getAllClients();
 				Swal.fire({ 
@@ -74,11 +74,11 @@ class Clients {
 	}
 
 	async updateClient() {
-		VMasker(document.querySelector(".clientCPFEdit")).maskPattern("999.999.999-99");
-		const formElemEdit = document.getElementById("formElemEdit");
+		VMasker(c(".clientCPFEdit")).maskPattern("999.999.999-99");
+		const formElemEdit = getId("formElemEdit");
 
 		formElemEdit.addEventListener("submit", async function(e) {
-			const instanceModal = document.getElementById('editClient');
+			const instanceModal = getId('editClient');
 			const modal = bootstrap.Modal.getInstance(instanceModal); 
 			modal.hide();
 			e.preventDefault();
@@ -100,7 +100,7 @@ class Clients {
 
 			if(res.result.status) {
 				const clients = new Clients();
-				let tbody = document.querySelector("table tbody");
+				let tbody = c("table tbody");
 				tbody.innerHTML = null;
 				clients.getAllClients();
 				Swal.fire({ 
@@ -188,7 +188,7 @@ class Groups{
 
 		result.forEach(group => {
 			let tbody = c("table tbody");
-			tbody.innerHTML += `<tr><th class="clientId" scope="row">${group.group_id}</th><th class="groupId" scope="row">${group.group_name}</th><th><button type="button" class="btn btn-warning text-light"data-id="${group.group_id}"data-bs-toggle="modal" data-bs-target="#editGroup" onclick="getGroupData(this)"><i class="fa-solid fa-pen-to-square"></i></button></th></tr>`;
+			tbody.innerHTML += `<tr><th class="clientId" scope="row">${group.group_id}</th><th class="groupId" scope="row">${group.group_name}</th><th class="text-center"><button type="button" class="btn btn-warning text-light"data-id="${group.group_id}"data-bs-toggle="modal" data-bs-target="#editGroup" onclick="getGroupData(this)"><i class="fa-solid fa-pen-to-square"></i></button> <button type="button" class="btn btn-danger text-light"data-id="${group.group_id}" onclick="deleteGroup(this)"><i class="fas fa-trash"></i></button></th></tr>`;
 		})
 	}
 
