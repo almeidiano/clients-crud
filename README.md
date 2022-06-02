@@ -15,6 +15,7 @@
 Algumas fontes (videoaulas, tutoriais e documentações) ultilizadas para a criação
 * Bootstrap 5 https://getbootstrap.com/docs/5.1/getting-started/introduction/
 * Requisições Fetch API https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API/Using_Fetch
+* Alguns comandos do postgres https://www.php.net/manual/pt_BR/ref.pgsql.php
 
 
 
